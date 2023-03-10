@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<fstream>
 using namespace std;
 
@@ -17,36 +17,36 @@ void main()
 
 #ifdef WRITE_TO_FILE
 
-	ofstream fout;			//1) Создаем поток
-	fout.open("File.txt", std::ios_base::app);	//2) Открываем поток
-	fout << "Hello Files" << endl;//3) Пишем в поток
-	fout << "Всем привет" << endl;
-	fout.close();			//4) После того как запись в поток выполнена, его обязательно нужно закрыть!!!
+	ofstream fout;			//1) РЎРѕР·РґР°РµРј РїРѕС‚РѕРє
+	fout.open("File.txt", std::ios_base::app);	//2) РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє
+	fout << "Hello Files" << endl;//3) РџРёС€РµРј РІ РїРѕС‚РѕРє
+	fout << "Р’СЃРµРј РїСЂРёРІРµС‚" << endl;
+	fout.close();			//4) РџРѕСЃР»Рµ С‚РѕРіРѕ РєР°Рє Р·Р°РїРёСЃСЊ РІ РїРѕС‚РѕРє РІС‹РїРѕР»РЅРµРЅР°, РµРіРѕ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РЅСѓР¶РЅРѕ Р·Р°РєСЂС‹С‚СЊ!!!
 	system("notepad File.txt");
 
 #endif // WRITE_TO_FILE
 #ifdef READ_FROM_FILEDEBUG
 
 	std::ifstream fin("File.txt");
-	cout << "Начальная позиция курсора: " << fin.tellg() << endl;
+	cout << "РќР°С‡Р°Р»СЊРЅР°СЏ РїРѕР·РёС†РёСЏ РєСѓСЂСЃРѕСЂР°: " << fin.tellg() << endl;
 	fin.seekg(0, ios::end);
 	int i = 0;
 	int filesize = fin.tellg();
-	cout << "Конечная позиция курсора: " << filesize << endl;
+	cout << "РљРѕРЅРµС‡РЅР°СЏ РїРѕР·РёС†РёСЏ РєСѓСЂСЃРѕСЂР°: " << filesize << endl;
 	for (; filesize > 1024; i++, filesize /= 1024);
-	cout << "Размер файла: " << filesize << " " << UNITS[i] << endl;
-	//fin.tellg() - tell get position (говорит позцию считывающего курсора)
+	cout << "Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°: " << filesize << " " << UNITS[i] << endl;
+	//fin.tellg() - tell get position (РіРѕРІРѕСЂРёС‚ РїРѕР·С†РёСЋ СЃС‡РёС‚С‹РІР°СЋС‰РµРіРѕ РєСѓСЂСЃРѕСЂР°)
 	system("PAUSE");
 	if (fin.is_open())
 	{
-		//TODO: будем читать из файла
+		//TODO: Р±СѓРґРµРј С‡РёС‚Р°С‚СЊ РёР· С„Р°Р№Р»Р°
 		const int SIZE = 1024 * 512;
 		char sz_buffer[SIZE] = {};
 		while (!fin.eof())
 		{
 			//fin >> sz_buffer;
-			fin.getline(sz_buffer, SIZE);	//getline() позволяет ввести строку с пробелами, до заданного разделителя
-			//по умолчанию, разделителем для fin.getline() является '\n'
+			fin.getline(sz_buffer, SIZE);	//getline() РїРѕР·РІРѕР»СЏРµС‚ РІРІРµСЃС‚Рё СЃС‚СЂРѕРєСѓ СЃ РїСЂРѕР±РµР»Р°РјРё, РґРѕ Р·Р°РґР°РЅРЅРѕРіРѕ СЂР°Р·РґРµР»РёС‚РµР»СЏ
+			//РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, СЂР°Р·РґРµР»РёС‚РµР»РµРј РґР»СЏ fin.getline() СЏРІР»СЏРµС‚СЃСЏ '\n'
 			cout << sz_buffer << endl;
 		}
 		fin.close();
@@ -66,13 +66,13 @@ void main()
 
 	ofstream outfile(fileName);
 	outfile << "Hello Files" << endl;
-	outfile << "Всем привет" << endl;
+	outfile << "Р’СЃРµРј РїСЂРёРІРµС‚" << endl;
 	outfile.close();
 	ifstream infile(fileName);
 
 #endif // HOME_WORK_T1
 
-	//streamoff() - смещение позиций в потоке
+	//streamoff() - СЃРјРµС‰РµРЅРёРµ РїРѕР·РёС†РёР№ РІ РїРѕС‚РѕРєРµ
 
 	std::ifstream is("201 RAW.txt", std::ifstream::binary);
 	if (is)
