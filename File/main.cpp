@@ -90,9 +90,7 @@ void main()
 
 	}
 */
-	string fileName;
-	cin >> fileName;
-	fileName += ".txt";
+	
 	streampos size;
 	char* memblock;
 
@@ -104,11 +102,9 @@ void main()
 		file.seekg(0, ios::beg);
 		file.read(memblock, size);
 		file.close();
-		cout << "file in memory"<<endl;
+		
 		std::cout.write(memblock, size);
-		ofstream outfile(fileName);
-		ifstream infile(fileName);
-
+		
 		delete[] memblock;
 	}
 		
