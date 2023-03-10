@@ -71,26 +71,45 @@ void main()
 	ifstream infile(fileName);
 
 #endif // HOME_WORK_T1
-
-	//streamoff() - смещение позиций в потоке
-
+/*
 	std::ifstream is("201 RAW.txt", std::ifstream::binary);
 	if (is)
 	{
-
+		
 		is.seekg(0, is.end);
 		int length = is.tellg();
 		is.seekg(0, is.beg);
 
 		char* buffer = new char[length];
 		is.read(buffer, length);
+		
 		is.close();
-
 		std::cout.write(buffer, length);
 
 		delete[] buffer;
 
 	}
+*/
+	string fileName;
+	cin >> fileName;
+	fileName += ".txt";
+	streampos size;
+	char* memblock;
 
+	ifstream file("201 RAW.txt", ios::in | ios::binary | ios::ate);
+	if (file.is_open())
+	{
+		size = file.tellg();
+		memblock = new char[size];
+		file.seekg(0, ios::beg);
+		file.read(memblock, size);
+		file.close();
+		cout << "file in memory"<<endl;
+		std::cout.write(memblock, size);
+		ofstream outfile(fileName);
+		ifstream infile(fileName);
 
+		delete[] memblock;
+	}
+		
 }
